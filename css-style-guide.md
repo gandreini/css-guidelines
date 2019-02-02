@@ -12,7 +12,7 @@ The CSS code will be written using <a href="https://sass-lang.com/" target="_bla
 
 ### 1.2	Gulp
 
-SASS will be compiled with a **Gulp task**. This allows all developers working on the same project, to compile SASS using the same tool and avoid having developers using different compilers that could have some pre-built mixins not available to others. <a href="https://blog.teamtreehouse.com/use-npm-task-runner" target="_blank">NPM task runner</a> or <a href="https://gruntjs.com/" target="_blank">Grunt</a> can also be used. Gulp allows to perform all the other tasks needed to manage the project.
+SASS will be compiled with a **Gulp task**. This allows all developers working on the same project to compile SASS using the same tool. <a href="https://blog.teamtreehouse.com/use-npm-task-runner" target="_blank">NPM task runner</a> or <a href="https://gruntjs.com/" target="_blank">Grunt</a> can also be used.
 
 More info about how to use Gulp.js to automate CSS tasks <a href="https://www.sitepoint.com/automate-css-tasks-gulp/" target="_blank">here</a>.
 
@@ -28,36 +28,27 @@ Please set up your code editor with these settings:
 
 Spaces are the only way to guarantee code renders the same in any person's environment.
 
-### 1.4	Anatomy of a Ruleset
-
-Before we discuss how we write our rulesets, let’s first familiarise ourselves with the relevant terminology:
-
-    [selector] {
-        [<--declaration--->]
-        [property]: [value];
-    }
-
-### 1.5	HTML inline styles
+### 1.4	HTML inline styles
 
 **Never** write inline style in the HTML code.
 Inline styles generate critical **<a href="http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/" target="_blank">specificity problems</a>**
 that might be very difficult to fix and impose the usage of **!important**.
 
 
-### 1.6	Temporary css
+### 1.5	Temporary css
 
 Sometimes is necessary to write a CSS declaration very fast and it might not be possible to compile the SASS files.
 **It is mandatory not to edit the style.css compiled by SASS: these modifications will be lost the next time a developer compiles the CSS**.
 
 For this reason we create a static **temporary.css** file that is linked in the HTML right after the style.css: in this file is possible to write CSS declarations when it is not possible to compile the SASS file. This must be used only for critical situations and urgent bug fixings. Then the declarations in this file must be moved to the SASS files: the temporary CSS file must be empty most of the time.
 
-### 1.7 Avoid undoing/overriding
+### 1.6 Avoid undoing/overriding
 
 **You're undoing CSS when you are writing declarations that override other declarations written somewhere else in the code.** This means that HTML elements are affected by too many conflicting CSS declarations and you'll need to rely on specificity to style correctly the element.
 
-Undoing is a bad way of coding and we must always minimise undoing from above levels. This typically happens in large projects where we start with a CSS framework (i.e. Bootstrap) and then we realize we are writing a lot of declarations to overwite the default framework's style (see 2.6 External frameworks (like Bootstrap)).
+**Undoing is a bad way of coding** and we must always minimise undoing from above levels. This typically happens in projects where we start with a CSS framework and then we realize we are writing a lot of declarations to overwite the default framework's style (see 2.6 External frameworks).
 
-### 1.8	80 characters wide
+### 1.7	80 characters wide
 
 Where possible, limit CSS files width to 80 characters. Reasons for this include:
 
@@ -65,13 +56,13 @@ Where possible, limit CSS files width to 80 characters. Reasons for this include
   - viewing CSS on sites like GitHub, or in terminal windows;
   - providing a comfortable line length for comments.
 
-### 1.9 Style Lint
+### 1.8 Style Lint
 
-SASS files should be verified with the linting tool <a href="http://stylelint.io/" target="_blank">Style Lint</a>. Style linting must be set up as a task in the Gulp file and run whenever a SASS file is modified. More info on how to set up style linting with Gulp <a href="http://www.creativenightly.com/2016/02/How-to-lint-your-css-with-stylelint/" target="_blank">here</a>.
+SASS files must be verified with the linting tool <a href="http://stylelint.io/" target="_blank">Style Lint</a>. Style linting must be set up as a task in the Gulp file and run whenever a SASS file is modified. More info on how to set up style linting with Gulp <a href="http://www.creativenightly.com/2016/02/How-to-lint-your-css-with-stylelint/" target="_blank">here</a>.
 
-Our stylelint file is available for download <a href="http://www.giulioandreini.it/resources/stylelintrc" target="_blank">here</a>.
+Our stylelint file is available <a href="https://github.com/gandreini/css-guidelines/blob/master/stylelintrc" target="_blank">here</a>.
 
-### 1.10 spacing-unit
+### 1.9 spacing-unit
 
 All margins and paddings must be expressed using the variable:
 
@@ -89,7 +80,7 @@ The benefits of using this variable are:
 - a more coherent spacing of elements;
 - changing the value of `$spacing-unit` of a few pixel, you can change the overall look and feel of you UI in seconds.
 
-### 1.11	HTML 5
+### 1.10	HTML 5
 
 HTML 5 tags must be used when writing HTML markup. These semantic elements clearly describe their meaning to both the browser and the developer.
 
@@ -97,8 +88,7 @@ HTML 5 tags must be used when writing HTML markup. These semantic elements clear
 
 ## 2. SASS file organization
 
-File organization, file naming and class naming are strictly related and very important to easily manage the style of the project.
-Our general approach to manage CSS and the whole project is based on Modular CSS on which you can find more informations <a href="https://spaceninja.com/2018/09/17/what-is-modular-css/?utm_source=CSS-Weekly&utm_campaign=Issue-332&utm_medium=email" target="_blank">here</a>. We also adopt the Inverted Triangle CSS (ITCSS) philosophy, in a slightly simplified version. More info about ITCSS <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/" target="_blank">here</a>.
+Our approach to manage CSS of the project is based on Modular CSS on which you can find more informations <a href="https://spaceninja.com/2018/09/17/what-is-modular-css/?utm_source=CSS-Weekly&utm_campaign=Issue-332&utm_medium=email" target="_blank">here</a>. We also adopt the Inverted Triangle CSS (ITCSS) philosophy, in a slightly simplified version. More info about ITCSS <a href="https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/" target="_blank">here</a>.
 
 SASS files are divided in 5 main folders that organize them in a logical structure:
 
@@ -141,9 +131,7 @@ Common elements that style HTML tags. **No use of classes in here**, only HTML t
 
 ### 2.3 Components
 
-Styles for components. What is a component? **A component is a distinct, independent unit**, that can be combined with other components to form a more complex structure. **Components are built to be reusable** in different contexts, can be nested one into the other or directly inserted into layouts. Components' style is also **indipendent** of the parent elements that wraps them.
-
-Sometimes components are referred as **modules**.
+Styles for components (or modules). What is a component? **A component is a distinct, independent unit**, that can be combined with other components to form a more complex structure. **Components are built to be reusable** in different contexts, can be nested one into the other or directly inserted into layouts. Components' style is also **indipendent** of the parent elements that wraps them.
 
 ### 2.4 Layouts
 
@@ -151,31 +139,25 @@ Layouts are the strucuture of each page and create the main areas where componen
 
 ### 2.5 Utilities
 
-Utilities and helper classes with ability to override the styles defined in Global, Components and Layouts. Utilities includes classes for **hidden elements**, **label and value** elements to show metedata, classes to set up a **sticky footer**.
+Utilities and helper classes with ability to override the styles defined in Global, Components and Layouts. Utilities includes classes for **hidden elements**, **label and value** elements to show metadata, classes to set up a **sticky footer**.
 
-### 2.6 External frameworks (like Bootstrap)
+### 2.6 External frameworks
 
-In some projects it could be useful to use a framework like Bootstrap of Foundation. You're highly discouraged to use this type of frameworks for complex projects since you'll spend a lot of time undoing styles (see 1.7 Avoid undoing/overriding).
+You're discouraged to use frameworks like Bootstrap of Foundation for complex and long term projects since you'll spend a lot of time undoing styles (see 1.6 Avoid undoing/overriding).
 
-If you use a framework, import it using a package manager (like NPM or Bower) and never modify the original files. Import the SASS files in the main **style.scss** file where you import all your files: select only the files you are really using (don't import the whole CSS).
+If you use a framework, import it using a package manager (like NPM or Bower) and never modify the original files. Import the SASS files in the main **style.scss** and select only the files you really need (don't import the whole CSS).
 
-Be aware that using the theming options of the framework (like bootstrap-theme of Bootstrap) will lead to having one more layer of styling for each element and you'll have to undo two levels of CSS style.
+Be aware that using the theming options of the framework (like bootstrap-theme of Bootstrap) will add another layer of style.
 
 ### 2.7 Color scheme
 
-In any UI is a good habit to use a limited set of colors. Using too many colors can lead to have a very incoherent interface that confuses the user.
+It's a good habit to use a limited set of colors: using too many colors can lead to have a very incoherent interface that confuses the user.
 
-For this reason we have a **color-scheme.scss** file that contains the variables **of all the colors used in the project**. This is useful to control and limit the number of colors used: these should be less than 15, including all the possible shades of gray used for borders and backgrounds.
+For this reason we have a **color-scheme.scss** file that contains the variables **of all the colors used in the project**. This will limit the number of colors used that should be less than 15, including all the possible shades of gray used for borders and backgrounds.
 
 The file should be imported before the **variables.scss**.
 
-Using other colors not declared into **color-scheme.scss** is not allowed.
-
-### 2.8 File organization, file naming and class naming
-
-TODO
-
-### 2.9 Style.scss file
+### 2.8 Style.scss file
 
 Outside the folders **Generic, Global, Components, Layouts, Utilities** we create the **style.scss** file which is responsible for importing all the needed scss files (that will be compiled by SASS).
 
@@ -187,7 +169,7 @@ The **style.scss** file starts with a comment where we write the name of the pro
 	// Sass styles import for whole project
 	//
 
-The next section is where we import external libraries (e.g. Susy). This is how it looks like:
+The next section is where we import external libraries (e.g. Susy, Bootstrap). This is how it looks like:
 
 	// ------------------------------------ //
 	// #LIBRARIES
@@ -212,11 +194,9 @@ The other sections (**Generic, Global, Layouts, Utilities**) will look the same.
 
 ---
 
-
 ## 3. Naming conventions
 
-Naming conventions in CSS are useful in making your code consistent and more informative. Name something based on what it is, not how it looks or behaves.
-Never use a class like **.red**: this will cause you problems the day you want that element to be green. Never use a class like **.left-bar**: this won't make sense the day you decide to move that bar on the right.
+Naming conventions in CSS are useful in making your code consistent and more informative. Name something based on what it is, not on how it looks or behaves. Never use a class like **.red**: this will cause you problems the day you want that element to be green. Never use a class like **.left-bar**: this won't make sense the day you decide to move that bar on the right.
 
 **Camel case must not be used for classes**.
 
@@ -260,21 +240,19 @@ When you have many nested elements, always create a two levels class, using the 
 
 **component-root-class__child-or-grandchild-element-class**
 
-We **never** rely on HTML tags as CSS selectors: this guarantees that if we change an HTML tag, the style of the page is not affected. For this reason, each HTML element must have a class.
+We **never** rely on HTML tags as CSS selectors: this guarantees that if another developer changes an HTML tag, the style of the page is not affected. For this reason, each HTML element must have a class.
 
 ### 3.2 Class prefix
 
-In some projects, our CSS selectors could conflict with other stylesheets: this happens when we use a CSS framework or we are developing an application that must be embedded in other HTML pages. Let's say you have a **pagination component** and the root class is `pagination`. If this component is used in a page where Bootstrap or Foundation are also used, the framework's style could affect your component and viceversa (your CSS could affect the style of the framework's component).
+In some projects, our CSS selectors could conflict with other stylesheets: this happens when we use a CSS framework or we are developing an application that must be embedded in other HTML pages. Let's say you have a **pagination component** and the root class is `pagination`. If this component is used in a page where Bootstrap or Foundation are also used, the framework's style could affect your component and viceversa.
 
-In these cases it's a good habit to add a short **prefix** to all our classes to avoid any kind of conflict. Let's say we are working on a project called **MY PROJECT**, we will add a prefix **"mp-** to all the classes and the pagination component will be:
+In these cases it's a good habit to add a short **prefix** to all our classes to avoid any kind of conflict: the prefix should be short (2 or 3 letters) and delimited by an hyphen `-`. If the project is called **MY PROJECT**, we will add a prefix **"mp-** to all the classes and the pagination component will be:
 
 ```
 <div class="mp-pagination">
 	...
 </div>
 ```
-
-Class prefixes should be short, we suggest the syntax: `xx-`.
 
 ### 3.3 Variables
 
@@ -298,23 +276,39 @@ Variables must be grouped into logical groups that must be introduced by a comme
     //  COLORS
     // ------------------------------------ //
 
-and variables whose name is not completely explaining its meaning must be preceded by a comment like this:
+and variables whose name is not easily understandable must be preceded by a comment like this:
 
     // Sets the margin between the content and the footer
     @content-margin-bottom: $spacing-unit;
 
-Sometimes it's be useful to define variables with values relative to other variables. This is clear with colors where we can have a main color for links and a hover color which is the **same color but lighter**:
+Sometimes it's useful to define variables with values relative to other variables. This happens with colors where we can have a main color for links and a hover color which is **a lighter shade of the same color**:
 
     @color-text-link: #0071bc;
     @color-text-link-hover: lighten(@color-text-link, 25);
 
-if we change the color of link we must **change only one value** and the second one is changed automatically.
+This allows to change a single variable and affect many variables in our **variables.scss**.
+
+### 3.4 File naming conventions
+
+File organization, file naming and class naming are strictly related and very important to easily manage the style of the project.
+
+Naming conventions don't affect only class names, but also the name of some files of the project. This is especially true for **components** and **layouts**.
+
+For instance, the same **component/layout name** will be used for:
+
+- **SASS root class**: each component/layout SASS file root class.
+- **SASS file name**: also the SASS file for each component/layout will be named using the corresponding name. Class pre
+- **HTML class of the root element**: each component/layout HTML code root element class. Child elements will be named as seen before (see 3.1 Components and layouts);
+- **HTML file name**;
+- **JS/PHP/* file name**: depending on the technology of the project.
+
+Why: naming coherence allows developers to easily understand what any snippet of code is and belongs to, easily find what they are looking for
 
 ---
 
 ## 4. States
 States are used to style components that are in special momentary condition like **active**, **disabled** or **loading**.
-In this case we don't follow the BEM guidelines but we **add** a standalone state class at the root element of the component. State classes start with the prefix **"is-"** or **"has-"**.
+In this case we don't follow the BEM guidelines but we **add** a standalone state class at the **root element of the component**. State classes start with the prefix **"is-"** or **"has-"**.
 
 Some examples:
 
@@ -331,7 +325,7 @@ These classes must not have a style for theirselves but are always styled in the
 ---
 
 ## 5. Grids
-Grid styles must not be hardcoded as classes in HTML, like some frameworks do (e.g. Bootstrap). This can be fast to implement, but if you want to change the layout you'll have to modify the HTML. Moreover, with this solution, you don't have full flexibility when implementing grids for responsive layouts.
+Grid styles must not be hardcoded as classes in HTML, like some frameworks do (e.g. Bootstrap): although this is fast to implement, if you want to change the layout you'll have to modify the HTML. Moreover, with this solution, you don't have full flexibility when implementing grids for responsive layouts.
 
 Instead, we use <a href="http://susy.oddbird.net/" target="_blank">Suzy</a> which is a minimal framework only for grids that relies a lot on native CSS properties and helps the transition to native CSS Grid Layout.
 
@@ -387,22 +381,15 @@ The same layout can then be viewed as a 2 columns layout in a tablet (portrait).
 	
 	}
 
-
-
-
-
-
-
-
-
-
 ---
 
 ## 6. Formatting
 
+Before we discuss how we write our rulesets, let’s first familiarise ourselves with the relevant terminology:
+
     [selector] {
-        [property]: [value];
         [<--declaration--->]
+        [property]: [value];
     }
 
 Here are some formatting guidelines:
@@ -442,20 +429,16 @@ For nested ruleset we also leave a blank line before the nested ruleset. Here’
         }
     }
 
-Nesting in SASS should be avoided wherever possible and used only when necessary to have the desired specificity.
+Nesting in SASS should be avoided wherever possible and used only when necessary to have the desired specificity: as a rule of thumb we have the root class at the beginning of each scss file and all the child elements at the first level.
 
 ### 6.1 Whitespaces
 
-As well as indentation, we can provide a lot of information through liberal
-and judicious use of whitespace between rulesets.
-We usually have one (1) empty line between rulesets and two (2) empty lines at
+We have **one** empty line between rulesets and **two** empty lines at
 the end of each main section of code.
 
 ### 6.2 Colors
 
-We prefer using hex color codes (`#f0f0f0`).
-Short hex colors and color names (e.g. **red**) are not allowed.
-Letters in the hex color must be lowercase.
+We use hex color codes (`#f0f0f0`). Short hex colors and color names (e.g. **red**) are not allowed. Letters in the hex color must be lowercase.
 
 
 ### 6.3 Declarations order
