@@ -290,19 +290,15 @@ This allows to change a single variable and affect many variables in our **varia
 
 ### 3.4 File naming conventions
 
-File organization, file naming and class naming are strictly related and very important to easily manage the style of the project.
-
-Naming conventions don't affect only class names, but also the name of some files of the project. This is especially true for **components** and **layouts**.
+File organization, file naming and class naming are strictly related and very important to easily manage the project: naming conventions don't affect only class names, but some also file names. This is especially true for **components** and **layouts**.
 
 For instance, the same **component/layout name** will be used for:
 
-- **SASS root class**: each component/layout SASS file root class.
-- **SASS file name**: also the SASS file for each component/layout will be named using the corresponding name. Class pre
-- **HTML class of the root element**: each component/layout HTML code root element class. Child elements will be named as seen before (see 3.1 Components and layouts);
-- **HTML file name**;
-- **JS/PHP/* file name**: depending on the technology of the project.
-
-Why: naming coherence allows developers to easily understand what any snippet of code is and belongs to, easily find what they are looking for
+- the **name of the HTML file of the component/layout** (without prefix, see 3.2 Class prefix);
+- the **name of the corresponding SASS file of the component/layout** (without prefix, see 3.2 Class prefix);
+- the **class of the root element in the HTML**;
+- the **root SASS class** (the first class in the file).
+- related **JS/PHP/* file name**, depending on technology (without prefix, see 3.2 Class prefix).
 
 ---
 
