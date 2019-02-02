@@ -548,16 +548,19 @@ If we want to write the same comment but this must not be compiled by the prepro
 
 ### 7.3 Selector level comments
 
-This is not mandatory but needed when writing CSS code that perform
-some strange or unexpected action. We need to use this comments when writing CSS related to the entire CSS selector that will be hard to understand week or months after.
+These comments are inserted before the selector: they are not always mandatory but needed when writing CSS that's not easily understandable.
 
-This is a simple single line comment:
+Example:
 
     /* This set of declarations is doing this and that */
+    .selector {
+    }
 
 If we want to write the same comment but this must not be compiled by the preprocessor, please write it this way:
 
     // This set of declarations is doing this and that
+    .selector {
+    }
 
 ### 7.4 Inline comments
 
@@ -576,7 +579,7 @@ If we want to write the same comment but this must not be compiled by the prepro
 
 ## 8. Media Queries
 
-Media queries **shouldn’t be written in a single file** but divided in each SASS file to define media queries behaviour for each specific component, section or layout.
+Media queries **shouldn’t be written in a separate file** but divided in each SASS file to define media queries behaviour for each specific component, section or layout.
 
 
 ---
@@ -586,7 +589,7 @@ Media queries **shouldn’t be written in a single file** but divided in each SA
 
 Keep **specificity low**.
 
-There will always be times you need to override the style of an element, so the lower the specificity is on a selector, the easier it is to override. Not only that, but override in such a way you might even be able to override it again without going crazy with an **ID selector** or **!important**.
+There will always be times you need to override the style of an element, so the lower the specificity is on a selector, the easier it is to override it. Not only that, but override in such a way you might even be able to override it again without going crazy with an **ID selector** or **!important**.
 
 To keep specificity low:
 
