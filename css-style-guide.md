@@ -3,7 +3,7 @@
 
 ## 1. Introduction
 
-To keep the CSS code written for the project consistent and maintainable we provide CSS guidelines to follow during implementation and maintenance. 
+To keep the CSS code written for the project consistent and maintainable, we provide CSS guidelines to follow during implementation and maintenance. 
 The aim of these guidelines is to speed up development, make it easy for new developers to start working on the project, keep the code as it was written by a single developer, keep files short and readable.
 
 ### 1.1	Preprocessor
