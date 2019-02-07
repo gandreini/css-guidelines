@@ -587,7 +587,6 @@ Units and sizes must be set using pixels.
   - <a href="http://cssguidelin.es" target="_blank">High-level advice and guidelines for writing sane, manageable, scalable CSS</a>
   - <a href="http://codepen.io/chriscoyier/blog/codepens-css" target="_blank">CodePen's CSS</a>
   - <a href="http://blog.trello.com/refining-the-way-we-structure-our-css-at-trello/?utm_source=CSS-Weekly&utm_campaign=Issue-128&utm_medium=email" target="_blank">Refining The Way We Structure Our CSS At Trello</a>
-  - <a href="http://geek-rocket.de/frontend-development/scss-styleguide-with-bem-oocss-smacss/" target="_blank">Scss-Styleguide with BEM, OOCSS & SMACSS</a>
   - <a href="https://medium.com/@fat/mediums-css-is-actually-pretty-fucking-good-b8e2a6c78b06" target="_blank">Medium’s CSS is actually pretty f***ing good.</a>
   - <a href="https://github.com/evernote/sass-build-structure" target="_blank">Evernote SASS build structure</a>
   - <a href="http://maintainablecss.com/" target="_blank">Maintainable CSS</a>
