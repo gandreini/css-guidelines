@@ -61,6 +61,7 @@ SASS files must be verified with the linting tool <a href="http://stylelint.io/"
 All margins and paddings must be expressed using the variable:
 
 `$spacing-unit: 10px;`
+`$space: 10px;`
 
 The base value is `10px` but you can also set the variable to your own base value (e.g. `8px`). If you need different values you can multiply the variable:
 
