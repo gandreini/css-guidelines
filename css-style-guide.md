@@ -225,6 +225,24 @@ When you have many nested elements, always create a two levels class, using the 
 
 We **never** rely on HTML tags as CSS selectors: this guarantees that if another developer changes an HTML tag, the style of the page is not affected. For this reason, each HTML element must have a class.
 
+This HTML structure is reflected in SCSS files of components and layouts: these files usually opens with the root class (e.g. `.item-preview`) and all child elements (e.g. `item-preview__thumb`, `item-preview__*`) are nested at the first level, inside the root class. To avoid repeating the root class prefix in the child classes, please use the Sass Referencing Parent Selector (`&`) like this `&__thumb`, `&__title`. This solution allows to write less code and, in case the root class is changed, only one line of CSS must be updated. The SCSS code for the previously seen component example, would be:
+
+	.item-preview {
+		.&__thumb-caption-wrapper {
+			...
+		}
+		.&__thumb {
+			...
+		}
+		.&_image {
+		...
+		}
+		.&__caption {
+		}
+		...
+	}
+
+
 ### 3.2 Class prefix
 
 In some projects, our CSS selectors could conflict with other stylesheets: this happens when we use a CSS framework or we are developing an application that must be embedded in other HTML pages. Let's say you have a **pagination component** and the root class is `pagination`. If this component is used in a page where Bootstrap or Foundation are also used, the framework's style could affect your component and vice-versa.
