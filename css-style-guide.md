@@ -187,7 +187,7 @@ Naming conventions in CSS are useful in making your code consistent and more inf
 
 ### 3.1 Components and layouts
 
-We use a simplified version of the <a href="http://getbem.com/" target="_blank">BEM guidelines</a>. Components and layout classes are built using a simple **hyphen `-` delimited string**; their child elements have classes that are composed by the parent's class plus a custom part delimited using a **double underscore `__`**.
+We use a simplified version of the <a href="http://getbem.com/" target="_blank">BEM guidelines</a> (we don't use the BEM's "modifier"). Components and layout classes are built using a simple **hyphen `-` delimited string**; their child elements have classes that are composed by the parent's class plus a custom part delimited using a **double underscore `__`**.
 
 E.g. you'll have a component that has the class `item-preview` and a child element that has the class `item-preview__metadata`.
 
