@@ -8,11 +8,11 @@ The aim of these guidelines is to speed up development, make it easy for new dev
 
 ### 1.1	Preprocessor
 
-The CSS code will be written using <a href="https://sass-lang.com/" target="_blank">**SASS preprocessor**</a> with SCSS syntax. These guidelines also apply to projects based on **LESS** or **vanilla CSS**.
+The CSS code will be written using <a href="https://sass-lang.com/" target="_blank">**SASS preprocessor**</a> with SCSS syntax. We don't use **LESS** or any other preprocessor.
 
-### 1.2	Gulp
+### 1.2	Task management
 
-SASS will be compiled with a **Gulp task**. This allows all developers working on the same project to compile SASS using the same tool. <a href="https://blog.teamtreehouse.com/use-npm-task-runner" target="_blank">NPM task runner</a> or <a href="https://gruntjs.com/" target="_blank">Grunt</a> can also be used. More info about how to use Gulp.js to automate CSS tasks <a href="https://www.sitepoint.com/automate-css-tasks-gulp/" target="_blank">here</a>.
+SASS will be compiled with a **task manager**. This allows all developers working on the same project to compile SASS using the same tool. In the last years we've been using the <a href="https://blog.teamtreehouse.com/use-npm-task-runner" target="_blank">NPM task runner</a>, but also other task managers like <a href="https://gulpjs.com/" target="_blank">Gulp</a> or <a href="https://gruntjs.com/" target="_blank">Grunt</a> can be used.
 
 ### 1.3	Tabs and spaces
 
@@ -22,7 +22,7 @@ For indentation and formatting of the code, **we don’t use tabs but spaces**. 
  - **tab size = 4**;
  - **indent size = 4**.
 
-Spaces are the only way to guarantee code renders the same in any person's environment.
+Spaces are the only way to guarantee code renders the same in any person's environment. Please setup your VS Code to adopt these formatting rules.
 
 ### 1.4	HTML inline styles
 
@@ -44,7 +44,7 @@ For this reason, we create a static **temporary.css** file that is linked in the
 
 **Undoing is a bad way of coding** and we must always minimize undoing from the above levels. This typically happens in projects where we start with a CSS framework and then we realize we are writing a lot of declarations to overwrite the default framework's style (see 2.6 External frameworks).
 
-### 1.7	80 characters wide
+### 1.7 80 characters wide
 
 Where possible, limit CSS files width to 80 characters. Reasons for this include:
 
@@ -54,26 +54,25 @@ Where possible, limit CSS files width to 80 characters. Reasons for this include
 
 ### 1.8 Style Lint
 
-SASS files must be verified with the linting tool <a href="http://stylelint.io/" target="_blank">Style Lint</a>. Style linting must be set up as a task in the Gulp file and run whenever a SASS file is modified. More info on how to set up style linting with Gulp <a href="http://www.creativenightly.com/2016/02/How-to-lint-your-css-with-stylelint/" target="_blank">here</a>. Our stylelint file is available <a href="https://github.com/gandreini/css-guidelines/blob/master/stylelintrc" target="_blank">here</a>.
+SASS files must be verified with the linting tool <a href="http://stylelint.io/" target="_blank">Style Lint</a>. Style linting must be set up as a task in the task manager and run whenever a SASS file is modified. Our stylelint file is available <a href="https://github.com/gandreini/css-guidelines/blob/master/stylelintrc" target="_blank">here</a>.
 
-### 1.9 spacing-unit
+### 1.9 Spacing unit
 
 All margins and paddings must be expressed using the variable:
 
-`$spacing-unit: 10px;`
 `$space: 10px;`
 
 The base value is `10px` but you can also set the variable to your own base value (e.g. `8px`). If you need different values you can multiply the variable:
 
-`margin-bottom: $spacing-unit*2;`
+`margin-bottom: $space*2;`
 
-It is recommended to multiply `$spacing-unit` by integers or multiples of 0.5.
+It is recommended to multiply `$space` by integers or multiples of 0.5.
 
 The benefits of using this variable are:
 
 - faster CSS coding;
 - a more coherent spacing of elements;
-- changing the value of `$spacing-unit` of a few pixels, you can change the overall look and feel of your UI in seconds.
+- changing the value of `$space` of a few pixels, you can change the overall look and feel of your UI in seconds.
 
 ### 1.10	HTML 5
 
@@ -91,7 +90,7 @@ SASS files are organized in 5 main folders that organize them in a logical struc
 
 ### 2.1 Generic
 
-Files that don't directly style elements in the HTML: **color-scheme**, **variables**, **mixins**. Examples of **mixins** include:
+**Files that don't directly style elements in the HTML**: **color-scheme**, **variables**, **mixins**. Examples of **mixins** include:
 
 A mixin to keep floating elements consistent, without using `overflow: hidden;`:
 
@@ -140,7 +139,7 @@ You're discouraged to use frameworks like Bootstrap of Foundation for complex an
 
 ### 2.7 Color scheme
 
-It's a good habit to use a limited set of colors: using too many colors can lead to having a very incoherent interface that confuses the user. For this reason, we have a **color-scheme.scss** file that contains the variables **of all the colors used in the project**. This will limit the number of colors used that should be less than 15, including all the possible shades of gray used for borders and backgrounds. The file should be imported before the **variables.scss**.
+It's a good habit to use a limited set of colors: using too many colors can lead to having a very incoherent interface that confuses the user. For this reason, we have a **color-scheme.scss** file that contains the variables **of all the colors used in the project**. This will limit the number of colors used that should be less than 15, including all the possible shades of grey used for borders and backgrounds. The file should be imported before the **variables.scss**.
 
 ### 2.8 Style.scss file
 
@@ -154,7 +153,7 @@ The **style.scss** file starts with a comment where we write the name of the pro
 	// Sass styles import for whole project
 	//
 
-The next section is where we import external libraries (e.g. Susy, Bootstrap). This is how it looks like:
+The next section is where we import external libraries (e.g. Bootstrap). This is how it looks like:
 
 	// ------------------------------------ //
 	// #LIBRARIES
@@ -181,7 +180,7 @@ The other sections (**Generic, Global, Layouts, Utilities**) will look the same.
 
 ## 3. Naming conventions
 
-Naming conventions in CSS are useful in making your code consistent and more informative. Name something based on what it is, not on how it looks or behaves. Never use a class like `.red`: this will cause you problems the day you want that element to be green. Never use a class like `.left-bar`: this won't make sense the day you decide to move that bar on the right.
+Naming conventions in CSS are useful in making your code consistent and more informative. **Name something based on what it is, not on how it looks or behaves**. Never use a class like `.red`: this will cause you problems the day you want that element to be green. Never use a class like `.left-bar`: this won't make sense the day you decide to move that bar on the right.
 
 **Camel case must not be used for classes**.
 
@@ -219,7 +218,7 @@ Example code:
 		
 	</article>
 
-When you have many nested elements, always create a two levels class, using the root components class as the first part:
+When you have many nested elements, **always create a two levels class**, using the root components class as the first part:
 
 `component-root-class__child-or-grandchild-element-class`
 
@@ -280,7 +279,7 @@ Variables must be grouped into logical groups that must be introduced by a comme
 and variables whose name is not easily understandable must be preceded by a comment like this:
 
     // Sets the margin between the content and the footer
-    @content-margin-bottom: $spacing-unit;
+    @content-margin-bottom: $space;
 
 Sometimes it's useful to define variables with values relative to other variables. This happens with colors where we can have a main color for links and a hover color which is **a lighter shade of the same color**:
 
@@ -321,60 +320,71 @@ These classes must not have a style for themselves but are always styled in the 
 ---
 
 ## 5. Grids
-Grid styles must not be hardcoded as classes in HTML like some frameworks do (e.g. Bootstrap): although this is fast to implement, if you want to change the layout you'll have to modify the HTML. Moreover, with this solution, you don't have full flexibility when implementing grids for responsive layouts.
+We don't use a framework for grids: we use our own grid file that is placed in the **utilities** folder.
+Grids classes are usually named like:
 
-Instead, we use <a href="http://susy.oddbird.net/" target="_blank">Suzy</a> which is a minimal framework only for grids that relies a lot on native CSS properties and helps the transition to native CSS Grid Layout.
+- `n7-grid-1`
+- `ms-grid-4`
 
-### 5.1 Responsive columns layout basics
+where `n7-` and `ms-` are the prefix of the project and `-1` and `-4` are the number of columns.
 
-Let's see how we can build a 4 columns layout and a responsive version (comments inline).
+In a more complex scenario or a mobile-first application grids classes are like this:
 
-	/* 4 columns */
-    .list-container { // Parent container
-        > .list-container__item { // Child elements to be displayed in 4 columns		
+- `n7-grid-4-2`
+- `ms-grid-2-3`
 
-	       float: left; // You can also use Flexbox
-           width: span(3 of 12); // Susy
-           margin-right: gutter(of 12); // Susy
+the first case applies a grid with 4 columns that changes to 2 columns in a mobile view. The second case applies a grid with 2 columns (in a mobile first application) that changes to a 3 columns in desktop view.
 
-	        &:nth-child(4n) {
-               margin-right: 0; // Sets 0 right margin to each element in the last column
-           }
-           
-           &:nth-child(4n + 1) {
-               clear: both; // Clears the float for each first element in a new row
-           }
-        }
+These are the only classes that describe the style of the interface (see 3. Naming conventions): you can easily add these classes to an HTML element whenever you need to display in a grid its direct child elements.
+
+Grid files can exploit 3 different systems to correctly position elements:
+- **CSS Grid Layout**
+- **Flexbox**
+- **Float**
+
+We usually prefer **CSS Grid Layout**, but the other technologies must be used when compatibility with older browsers is required (i.e. stick to float if you need to support IE 10).
+
+### 5.1 Grid file example
+
+Here's an example excerpt from a CSS grid file.
+
+```
+/**
+ * GRIDS
+ *
+ * Helper class to display elements in grids.
+ * Apply the class to the container of the griddable elements (like cards). Direct descendants will be gridded.
+ */
+
+/* ------------------------------------ *\
+   #GRIDS
+\* ------------------------------------ */
+/* General grid setting */
+[class^="n7-grid-"] {
+    display: grid;
+    grid-column-gap: $grid-gutter-h;
+    grid-row-gap: $grid-gutter-v;
+}
+
+/* 4 */
+.n7-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+...
+
+/* ------------------------------------ *\
+   #MEDIA-QUERIES
+\* ------------------------------------ */
+@media all and (max-width: $breakpoint-smartphone-portrait) {
+
+    /* 4 */
+    .n7-grid-4 {
+        grid-template-columns: 1fr;
     }
 
-The same layout can then be viewed as a 2 columns layout in a tablet (portrait).
-
-	/* ------------------------------------ *\
-	   #MEDIA-QUERIES
-	\* ------------------------------------ */
-	@media all and (max-width: $breakpoint-ipad-portrait) {
-	
-		/* 2 columns */
-	    .list-container {
-	        > .list-container__item { // Child elements to be displayed in 2 columns	
-	
-		        &:nth-child(1n) { // Needed for specificity
-	                float: left;
-	                clear: none;
-	                width: span(6 of 12); // Susy
-	                margin-right: gutter(of 12); // Susy
-		        }
-	
-		        &:nth-child(2n) { // Susy
-	               margin-right: 0; // Sets 0 right margin to each element in the last column
-	           }
-	           
-	           &:nth-child(2n + 1) { // Susy
-	               clear: both; // Clears the float for each first element in a new row
-	           }
-	        }
-	    }
-	}
+}
+```
 
 ---
 
@@ -601,7 +611,6 @@ Units and sizes must be set using pixels.
 
 
 ## 11. Resources
-
 
   - <a href="http://cssguidelin.es" target="_blank">High-level advice and guidelines for writing sane, manageable, scalable CSS</a>
   - <a href="http://codepen.io/chriscoyier/blog/codepens-css" target="_blank">CodePen's CSS</a>
